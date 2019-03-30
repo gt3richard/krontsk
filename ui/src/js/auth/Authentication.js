@@ -58,7 +58,7 @@ export default class Authentication extends PureComponent {
   Navigation = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
-            <a className="navbar-brand" href="/">Total Pay</a>
+            <a className="navbar-brand" href="/">Krontsk</a>
             <input
               hidden = {this.state.status !== 'Authenticated'}
               type="button" 
