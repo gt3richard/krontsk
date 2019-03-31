@@ -1,6 +1,6 @@
 .card {
-    min-width: 70vw;
-    height: 100px;
+    width: 80vw;
+    height: 75px;
     border: 5px;
     border-style: solid;
     border-width: 1px;
@@ -18,13 +18,30 @@
 
 .card-body {
     align-items: center;
-    min-width: 400px;   
+    width: 80vw;   
 }
 
-.task-mark {
+.task-mark .done {
+    color: green;
+}
+
+.task-mark .not-done {
+    color: white;
 }
 
 .task-date,
 .task-name {
     display: contents;
+    font-size: .8em;
+}
+
+
+.task-item {
+    background-color: lightslategrey;
+    color: black;
+    border: none;
+}
+
+.task {
+    height: 100%;
 }
