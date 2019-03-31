@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../assets/App.css';
 import Authentication from "./auth/Authentication"
 import Home from './Home'
+import store from '../store/TaskStore';
 
 import Amplify from 'aws-amplify'
 import config from '../aws-exports'
@@ -13,7 +14,7 @@ class App extends Component {
     return (
       <div className="app" >
           <Authentication />
-          <Home />
+          <Home store={store}/>
       </div>
     );
   }
