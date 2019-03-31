@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {observer} from "mobx-react"
 import '../../assets/App.css';
 import '../../assets/Tasks.css';
 
@@ -8,22 +9,23 @@ import TaskAdd from '../component/TaskAdd.js'
 export default class Tasks extends Component {
   
   render() {
-    const tasks = this.props.store.tasks.map((task) => {
-      return <Task 
-        id={task.id} 
-        name={task.name} 
-        date={task.date} 
-        state={task.state} 
-        store={this.props.store}
-        key={task.id}  
-        />
-    })
 
     return(
         <div className="tasklist">
-          {tasks}
-          <TaskAdd />
+          {this.props.store.tasks.map((task) => 
+            <Task 
+              id={task.id} 
+              name={task.name} 
+              date={task.date} 
+              state={task.state} 
+              store={this.props.store}
+              key={task.id}  
+              />
+            )}
+          <TaskAdd store={this.props.store} />
         </div>
     )
   }
 }
+
+Tasks = observer(Tasks)

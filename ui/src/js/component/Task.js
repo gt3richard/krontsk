@@ -21,17 +21,20 @@ export default class Task extends Component {
       this.state = {
           stateIcon: "fas fa-check not-done task-icon"
       }
+
+      this.setStateIcon = this.setStateIcon.bind(this)
+      this.onChange = this.onChange.bind(this)
   }
 
   componentDidMount() {
     this.setStateIcon(this.props.state)
   }
 
-  setStateIcon = (state) => {
+  setStateIcon = state => {
     this.setState({ "stateIcon": stateIconMap[state]})
   }
 
-  onChange = (event) => {
+  onChange = event => {
     const task = this.props.store.getTask(this.props.id)
     this.props.store.updateTask(task.id, stateFlowMap[task.state])
     this.setStateIcon(task.state)

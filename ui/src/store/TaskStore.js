@@ -1,4 +1,4 @@
-import {decorate, observable, action} from "mobx"
+import {decorate, observable, action, computed} from "mobx"
 
 class TaskStore {
     tasks = [
@@ -17,12 +17,19 @@ class TaskStore {
             return t
         })
     }
+
+    addTask(name, date) {
+        const task = {"id": (this.tasks.length + 1).toString(), "name": name, "date": date, "state": "not-done"}
+        this.tasks.push(task)
+        console.log(Array.from(this.tasks))
+    }
 }
 
 decorate(TaskStore, {
     tasks: observable,
     updateTask: action,
-    getTask: action
+    getTask: action,
+    addTask: action
 })
 
 const store = new TaskStore();
