@@ -15,6 +15,7 @@ export default class Tasks extends Component {
           <h2 className="task-heading">Not Done</h2>
           {this.props.store.tasks
             .filter(f => f.state !== 'done')
+            .sort((a, b) => a.date - b.date)
             .map((task) => 
             <Task 
               id={task.id} 
@@ -29,6 +30,7 @@ export default class Tasks extends Component {
           <h2 className="task-heading">Done</h2>
           {this.props.store.tasks
             .filter(f => f.state === 'done')
+            .sort((a, b) => a.date - b.date)
             .map((task) => 
             <Task 
               id={task.id} 
