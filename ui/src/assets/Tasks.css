@@ -5,7 +5,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    background-color: lightslategray;
+    background-color: white;
     
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 .card:hover {
-    background-color: slategrey;
+    background-color: white;
 }
 
 .card-body {
@@ -22,7 +22,7 @@
 }
 
 .task-mark .done {
-    color: green;
+    color: black;
 }
 
 .task-mark .not-done {
@@ -37,11 +37,24 @@
 
 
 .task-item {
-    background-color: lightslategrey;
+    background-color: white;
     color: black;
     border: none;
 }
 
 .task {
     height: 100%;
+}
+
+.date-picker {
+    margin-left: 10px;
+    max-width: 75px;
+}
+
+.task-add-title {
+    max-width: 60vw;
+}
+
+.task-heading {
+    text-align: left;
 }

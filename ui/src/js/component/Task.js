@@ -62,7 +62,6 @@ export default class Task extends Component {
         <div className="card mb-3">
           <div className="row card-body">
             <div className="input-group mb-3 task"> 
-                {drag}
                 <label type="text" className="form-control task-item" aria-label="Recipient's username" aria-describedby="button-addon2" >{this.props.name}</label>
                 <label type="text" className="form-control task-item" aria-label="Recipient's username" aria-describedby="button-addon2" >{this.props.date}</label>
                 {state}
