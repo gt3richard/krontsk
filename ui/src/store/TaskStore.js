@@ -7,7 +7,9 @@ class TaskStore {
     tasks = [
         { "id": "1", "name":"Wells Fargo Credit Card", "date": "15", "state":"not-done" },
         { "id": "2", "name":"Chase Credit Card", "date": "18", "state":"done" },
-        { "id": "3", "name":"Rent", "date": "1", "state":"not-done" }
+        { "id": "4", "name":"Chase Credit Soutwest Card", "date": "1", "state":"not-done" },
+        { "id": "5", "name":"Chase Credit United Card", "date": "2", "state":"not-done" },
+        { "id": "3", "name":"Rent", "date": "7", "state":"not-done" }
     ]
 
     getTask(id) {

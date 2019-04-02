@@ -38,7 +38,8 @@ export default class TaskAdd extends Component {
           <div className="row card-body">
             <div className="input-group mb-3 task">
                 <input type="text" 
-                  value={this.state.name} 
+                  value={this.state.name}
+                  maxLength={20} 
                   onChange={this.handleFormInput} 
                   onKeyPress={this.handleAdd} 
                   id="name" 

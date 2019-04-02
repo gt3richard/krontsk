@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
-import { format } from 'date-fns'
 import '../../assets/App.css';
 import '../../assets/Tasks.css';
 
@@ -10,16 +9,16 @@ import TaskAdd from '../component/TaskAdd.js'
 export default class Tasks extends Component {
   
   render() {
-
-    const today = new Date()
+    const sortByDate = (a, b) => {
+      return a.date - b.date
+    } 
 
     return(
         <div className="tasklist">
-          <h2>{format(today, "do") }</h2>
           <h2 className="task-heading">Not Done</h2>
           {this.props.store.tasks
             .filter(f => f.state !== 'done')
-            .sort((a, b) => a.date - b.date)
+            .sort(sortByDate)
             .map((task) => 
             <Task 
               id={task.id} 
@@ -34,7 +33,7 @@ export default class Tasks extends Component {
           <h2 className="task-heading">Done</h2>
           {this.props.store.tasks
             .filter(f => f.state === 'done')
-            .sort((a, b) => a.date - b.date)
+            .sort(sortByDate)
             .map((task) => 
             <Task 
               id={task.id} 

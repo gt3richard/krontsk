@@ -41,6 +41,7 @@ export default class TaskEdit extends Component {
             <div className="input-group mb-3 task"> 
                 <input type="text" 
                     value={this.state.name} 
+                    maxLength={20}
                     onChange={this.handleFormInput} 
                     onKeyPress={this.handleKeyInput} 
                     id="name" 
