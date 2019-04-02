@@ -24,6 +24,10 @@ export default class TaskEdit extends Component {
         this.props.store.updateTask(this.props.id, this.state.name, this.state.date)
     });
   }
+
+  handleDelete = event => {
+    this.props.store.deleteTask(this.props.id)
+  }
     
   render() {
     const options = Array.from(Array(31).keys()).map(m => {
@@ -51,6 +55,13 @@ export default class TaskEdit extends Component {
                 >
                   {options}
                 </select>
+                <div className="input-group-append" key="delete">
+                  <button className="btn btn-outline-dark task-mark" 
+                    type="button" 
+                    onClick={this.handleDelete}>
+                    <i className="far fa-trash-alt"></i>
+                  </button>
+              </div>
             </div>
           </div>
         </div>

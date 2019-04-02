@@ -39,21 +39,17 @@ export default class TaskView extends Component {
   }
     
   render() {
-    const state = [
-      <div className="input-group-append" key="state">
-          <button className="btn btn-outline-dark task-mark" type="button" onClick={this.handleStateChange}>
-            <i className={this.state.stateIcon}></i>
-          </button>
-      </div>
-    ]
-
     return(
         <div className="card mb-3">
           <div className="row card-body">
             <div className="input-group mb-3 task"> 
                 <label type="text" className="form-control task-item" >{this.props.name}</label>
                 <label type="text" className="form-control task-item" >{this.props.store.month[this.props.date]}</label>
-                {state}
+                <div className="input-group-append" key="state">
+                  <button className="btn btn-outline-dark task-mark" type="button" onClick={this.handleStateChange}>
+                    <i className={this.state.stateIcon}></i>
+                  </button>
+              </div>
             </div>
           </div>
         </div>

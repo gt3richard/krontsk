@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
+import { format } from 'date-fns'
 import '../../assets/App.css';
 import '../../assets/Tasks.css';
 
@@ -10,8 +11,11 @@ export default class Tasks extends Component {
   
   render() {
 
+    const today = new Date()
+
     return(
         <div className="tasklist">
+          <h2>{format(today, "do") }</h2>
           <h2 className="task-heading">Not Done</h2>
           {this.props.store.tasks
             .filter(f => f.state !== 'done')
