@@ -1,5 +1,7 @@
 import {decorate, observable, action} from "mobx"
 
+const uuidv1 = require('uuid/v1');
+
 class TaskStore {
 
     edit = false
@@ -34,7 +36,7 @@ class TaskStore {
     }
 
     addTask(name, date) {
-        const task = {"id": (this.tasks.length + 1).toString(), "name": name, "date": date, "state": "not-done"}
+        const task = {"id": uuidv1(), "name": name, "date": date, "state": "not-done"}
         this.tasks.push(task)
     }
 
