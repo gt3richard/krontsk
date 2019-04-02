@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="app" >
-          <Authentication />
+          <Authentication store={store}/>
           <Home store={store}/>
       </div>
     );

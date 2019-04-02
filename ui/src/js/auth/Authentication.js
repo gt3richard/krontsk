@@ -55,10 +55,15 @@ export default class Authentication extends PureComponent {
     this.setState({ errorMessage });
   }
 
+  handleEdit = event => {
+    this.props.store.edit = !this.props.store.edit
+  }
+
   Navigation = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
             <a className="navbar-brand" href="/">Krontsk</a>
+            <button className="btn btn-outline-dark my-2" onClick={this.handleEdit} type="button">Edit</button>
             <input
               hidden = {this.state.status !== 'Authenticated'}
               type="button" 
