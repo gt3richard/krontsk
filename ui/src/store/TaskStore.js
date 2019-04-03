@@ -1,18 +1,19 @@
 import {decorate, observable, action} from "mobx"
+import { getTasks } from '../service/Api.js'
 
 const uuidv1 = require('uuid/v1');
 
 class TaskStore {
 
+    userId = ""
+    accessToken = ""
     edit = false
+    tasks = []
 
-    tasks = [
-        { "id": "1", "name":"Wells Fargo Credit Card", "date": "15", "state":"not-done" },
-        { "id": "2", "name":"Chase Credit Card", "date": "18", "state":"done" },
-        { "id": "4", "name":"Chase Credit Soutwest Card", "date": "1", "state":"not-done" },
-        { "id": "5", "name":"Chase Credit United Card", "date": "2", "state":"not-done" },
-        { "id": "3", "name":"Rent", "date": "7", "state":"not-done" }
-    ]
+    getTasks() {
+        const callback = (result) => { this.tasks = result }
+        getTasks(this.userId, this.accessToken, callback)
+    }
 
     getTask(id) {
         return this.tasks.filter((t) => t.id === id)[0]
@@ -36,6 +37,7 @@ class TaskStore {
     }
 
     addTask(name, date) {
+        console.log(this.tasks)
         const task = {"id": uuidv1(), "name": name, "date": date, "state": "not-done"}
         this.tasks.push(task)
     }
@@ -80,6 +82,8 @@ class TaskStore {
 }
 
 decorate(TaskStore, {
+    userId: observable,
+    accessToken: observable,
     edit: observable,
     tasks: observable,
     updateTaskState: action,

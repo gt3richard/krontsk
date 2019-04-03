@@ -26,8 +26,12 @@ export default class Authentication extends PureComponent {
     })
       .then(data => {
         let user = {username:data.username,...data.attributes}
-        if(user.email_verified) this.setState({user, status:"Authenticated"}) 
-        else this.setState({user, status:"SignIn"})
+        this.props.store.userId = user.username
+        this.props.store.accessToken = data.signInUserSession.idToken.jwtToken
+        if(user.email_verified) this.setState({user:user, status:"Authenticated"}) 
+        else this.setState({user:user, status:"SignIn"})
+
+        this.props.store.getTasks()
       })
       .catch(err => console.log(err));
   }

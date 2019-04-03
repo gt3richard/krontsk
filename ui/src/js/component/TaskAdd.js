@@ -45,7 +45,7 @@ export default class TaskAdd extends Component {
                   id="name" 
                   className="form-control task-item task-add-title" 
                   placeholder="Task name" 
-                  autocomplete="off"
+                  autoComplete="off"
                 />
                 <select className="task-add-date" 
                   id="date" 

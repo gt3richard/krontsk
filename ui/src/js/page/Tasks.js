@@ -16,7 +16,7 @@ export default class Tasks extends Component {
     return(
         <div className="tasklist">
           <h2 className="task-heading">Not Done</h2>
-          {this.props.store.tasks
+          {this.props.store.tasks && this.props.store.tasks
             .filter(f => f.state !== 'done')
             .sort(sortByDate)
             .map((task) => 
@@ -31,7 +31,7 @@ export default class Tasks extends Component {
             )}
           <TaskAdd store={this.props.store} />
           <h2 className="task-heading">Done</h2>
-          {this.props.store.tasks
+          {this.props.store.tasks && this.props.store.tasks
             .filter(f => f.state === 'done')
             .sort(sortByDate)
             .map((task) => 
@@ -47,6 +47,7 @@ export default class Tasks extends Component {
           
         </div>
     )
+    
   }
 }
 
