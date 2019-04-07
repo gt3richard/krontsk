@@ -66,7 +66,7 @@ export default class ForgotVerify extends Component {
         <div className="input-group mb-3 input-group-lg">
           <input
             type="submit"
-            value="Verify"
+            value="Change Password"
             onClick={this.handleVerification}
             className="authentication__button btn-primary btn-lg btn-block"
           />

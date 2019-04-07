@@ -36,7 +36,7 @@ export default class Verify extends Component {
           Please verify your email account.
         </h2>
         <h6>
-          Thank your for signing up. Please check your email for a verification linke to complete your registration.
+          Thank your for signing up. Please check your email for a verification link to complete your registration.
         </h6>
       </form>
     );
