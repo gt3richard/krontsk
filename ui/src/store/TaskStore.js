@@ -5,6 +5,7 @@ const uuidv1 = require('uuid/v1');
 
 class TaskStore {
 
+    isAuthenticated = false
     userId = ""
     accessToken = ""
     edit = false
@@ -24,7 +25,7 @@ class TaskStore {
             if(t.id === id) { t.state = state }
             return t
         })
-        const callback = (result) => { console.log(result) }
+        const callback = (result) => {  }
         putTasks(this.userId, this.tasks, this.accessToken, callback)
     }
 
@@ -36,20 +37,20 @@ class TaskStore {
             }
             return t
         })
-        const callback = (result) => { console.log(result) }
+        const callback = (result) => {  }
         putTasks(this.userId, this.tasks, this.accessToken, callback)
     }
 
     addTask(name, date) {
         const task = {"id": uuidv1(), "name": name, "date": date, "state": "not-done"}
         this.tasks.push(task)
-        const callback = (result) => { console.log(result) }
+        const callback = (result) => { }
         putTasks(this.userId, this.tasks, this.accessToken, callback)
     }
 
     deleteTask(id) {
         this.tasks = this.tasks.filter(f => f.id !== id)
-        const callback = (result) => { console.log(result) }
+        const callback = (result) => { }
         putTasks(this.userId, this.tasks, this.accessToken, callback)
     }
 
@@ -89,6 +90,7 @@ class TaskStore {
 }
 
 decorate(TaskStore, {
+    isAuthenticated: observable,
     userId: observable,
     accessToken: observable,
     edit: observable,

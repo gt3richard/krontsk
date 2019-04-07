@@ -14,7 +14,6 @@ export function getTasks(userId, accessToken, callback) {
     .then(response => {
         if(response.status !== 200) { callback([])}
         else { 
-            console.log(response.data.Item.tasks)
             callback(response.data.Item.tasks)
         }
     }).catch(error => {

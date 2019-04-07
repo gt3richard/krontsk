@@ -21,19 +21,20 @@ export default class Authentication extends PureComponent {
   };
 
   componentDidMount() {
-    Auth.currentAuthenticatedUser({
-      bypassCache: true // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-    })
-      .then(data => {
-        let user = {username:data.username,...data.attributes}
-        this.props.store.userId = user.username
-        this.props.store.accessToken = data.signInUserSession.idToken.jwtToken
-        if(user.email_verified) this.setState({user:user, status:"Authenticated"}) 
-        else this.setState({user:user, status:"SignIn"})
+    Auth.currentAuthenticatedUser({ bypassCache: true })
+      .then(user => this.handleAuthentication(user))
+      .catch(err => {
+        console.log(err)
+        this.switchComponent("SignIn")
+      } );
+  }
 
-        this.props.store.getTasks()
-      })
-      .catch(err => console.log(err));
+  handleAuthentication = user => {
+    this.props.store.userId = user.username
+    this.props.store.accessToken = user.signInUserSession.idToken.jwtToken
+    this.setState({user:user}) 
+    this.switchComponent("Authenticated")
+    this.props.store.getTasks()
   }
 
   handleLogout = event => {
@@ -106,6 +107,7 @@ export default class Authentication extends PureComponent {
             switchComponent={this.switchComponent}
             handleFormInput={this.handleFormInput}
             handleErrorMessage={this.handleErrorMessage}
+            handleAuthentication={this.handleAuthentication}
             inputs={this.state}
           />
         );
@@ -133,6 +135,7 @@ export default class Authentication extends PureComponent {
     }
   };
   switchComponent = status => {
+    this.props.store.isAuthenticated = (status === 'Authenticated')
     this.setState({ status, 'errorMessage': '' });
   };
   render() {

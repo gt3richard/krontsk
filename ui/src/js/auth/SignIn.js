@@ -7,12 +7,8 @@ export default class SignIn extends Component {
   handleSignIn = event => {
     event.preventDefault();
     const { username, password } = this.props.inputs;
-    // You can pass an object which has the username, password and validationData which is sent to a PreAuthentication Lambda trigger
     Auth.signIn({ username, password })
-      .then(user => console.log(user))
-      .then(() => {
-        this.props.switchComponent("Authenticated")
-      })
+      .then(user => this.props.handleAuthentication(user))
       .catch(err => {
         console.log(err)
         switch(err.code) {
