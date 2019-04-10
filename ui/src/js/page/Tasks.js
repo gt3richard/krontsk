@@ -67,7 +67,7 @@ export default class Tasks extends Component {
                 <div className="card mb-3 edit">
                   <div className="card-body edit">
                     <h5 className="card-title edit">Modes</h5>
-                    <p className="card-text edit">Toggle the InProgress state.</p>
+                    <p className="card-text edit">Switch to a simplier mode.</p>
                     {stateMode}
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default class Tasks extends Component {
                 <div className="card mb-3 edit">
                   <div className="card-body edit">
                     <h5 className="card-title edit">Reset Frequency</h5>
-                    <p className="card-text edit">Set the requency that Done tasks will be reset.</p>
+                    <p className="card-text edit">Set the frequency that tasks will be reset.</p>
                     {resetMode}
                   </div>
                 </div>

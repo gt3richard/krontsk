@@ -8,7 +8,7 @@ class TaskStore {
     isAuthenticated = false
     userId = ""
     accessToken = ""
-    edit = true
+    edit = false
     stateMode = "simple"
     resetMode = "monthly"
     tasks = []
