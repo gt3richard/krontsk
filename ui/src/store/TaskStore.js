@@ -8,7 +8,9 @@ class TaskStore {
     isAuthenticated = false
     userId = ""
     accessToken = ""
-    edit = false
+    edit = true
+    stateMode = "simple"
+    resetMode = "monthly"
     tasks = []
 
     getTasks() {
@@ -94,6 +96,8 @@ decorate(TaskStore, {
     userId: observable,
     accessToken: observable,
     edit: observable,
+    stateMode: observable,
+    resetMode: observable,
     tasks: observable,
     updateTaskState: action,
     updateTask: action,

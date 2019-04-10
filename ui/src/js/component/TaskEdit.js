@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
-import '../../assets/App.css';
-import '../../assets/Tasks.css';
+import '../../assets/App.scss';
+import '../../assets/Tasks.scss';
 
 export default class TaskEdit extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class TaskEdit extends Component {
     return(
         <div className="card mb-3">
           <div className="row card-body">
-            <div className="input-group mb-3 task"> 
+            <div className="input-group mb-3"> 
                 <input type="text" 
                     value={this.state.name} 
                     maxLength={20}

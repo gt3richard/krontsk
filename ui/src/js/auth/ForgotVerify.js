@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import '../../assets/Auth.css'
+import '../../assets/Auth.scss'
 import TextField from '@material-ui/core/TextField';
 
 export default class ForgotVerify extends Component {

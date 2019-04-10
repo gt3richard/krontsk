@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/App.css';
+import '../assets/App.scss';
 import Authentication from "./auth/Authentication"
 import Home from './Home'
 import store from '../store/TaskStore';

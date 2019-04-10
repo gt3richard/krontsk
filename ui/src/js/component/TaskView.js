@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
-import '../../assets/App.css';
-import '../../assets/Tasks.css';
+import '../../assets/App.scss';
+import '../../assets/Tasks.scss';
 
 const stateIconMap = {
   "done": "fas fa-check done task-icon",
@@ -42,7 +42,7 @@ export default class TaskView extends Component {
     return(
         <div className="card mb-3">
           <div className="row card-body">
-            <div className="input-group mb-3 task"> 
+            <div className="input-group mb-3"> 
                 <label type="text" className="form-control task-item" >{this.props.name}</label>
                 <label type="text" className="form-control task-item" >{this.props.store.month[this.props.date]}</label>
                 <div className="input-group-append" key="state">

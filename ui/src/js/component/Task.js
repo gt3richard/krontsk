@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {observer} from "mobx-react"
-import '../../assets/App.css';
-import '../../assets/Tasks.css';
+import '../../assets/App.scss';
+import '../../assets/Tasks.scss';
 
 import TaskView from './TaskView.js'
 import TaskEdit from './TaskEdit.js'
