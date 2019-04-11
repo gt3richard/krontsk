@@ -22,6 +22,9 @@ export default class Intro extends Component {
                     month, 10 days prior to them being due, or manage it yourself.</p>
                 <img src="editMenu.png" width="400vw" max-width="600px" height="auto" alt="" />
             </div>
+            <footer>
+                <div className="footer">© 2019 by krontsk</div>
+            </footer>
         </div>
     )
   }
