@@ -3,9 +3,11 @@ import {observer} from "mobx-react"
 import '../../assets/App.scss';
 import '../../assets/Tasks.scss';
 
+import Intro from '../component/Intro.js'
 import Task from '../component/Task.js'
 import TaskAdd from '../component/TaskAdd.js'
 import EditMenu from '../component/EditMenu.js'
+
 
 export default class Tasks extends Component {
 
@@ -56,7 +58,9 @@ export default class Tasks extends Component {
     }
     else {
       return (
-        <div className="tasklist"></div>
+        <div className="tasklist">
+          <Intro />
+        </div>
       )
     }
 
