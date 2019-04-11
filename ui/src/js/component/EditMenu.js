@@ -3,6 +3,9 @@ import {observer} from "mobx-react"
 import '../../assets/App.scss';
 import '../../assets/Tasks.scss';
 
+const modeDescrip = "Switch to only done / not-done mode."
+const resetDescrip = "Set the frequency that tasks will be reset automatically."
+
 export default class EditMenu extends Component {
   constructor(props) {
     super(props);
@@ -17,14 +20,12 @@ export default class EditMenu extends Component {
     } else {
       this.props.store.stateMode = 'simple'
     }
+    this.props.store.updateUserData()
   }
 
-  onChangeResetMode(event) {
-    if(this.props.store.resetMode === 'monthly') {
-      this.props.store.resetMode = '10days'
-    } else {
-      this.props.store.resetMode = 'monthly'
-    }
+  onChangeResetMode(mode) {
+    this.props.store.resetMode = mode
+    this.props.store.updateUserData()
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class EditMenu extends Component {
         <div className="btn-group btn-group-toggle" data-toggle="buttons">
           <label 
             className={this.props.store.resetMode === 'monthly' ? "btn btn-secondary active": "btn btn-secondary"} 
-            onClick={this.onChangeResetMode}
+            onClick={(event) => this.onChangeResetMode('monthly')}
             value="monthly"
             >
             Monthly
@@ -49,11 +50,19 @@ export default class EditMenu extends Component {
           </label>
           <label 
             className={this.props.store.resetMode === '10days' ? "btn btn-secondary active": "btn btn-secondary"}
-            onClick={this.onChangeResetMode}
+            onClick={(event) => this.onChangeResetMode('10days')}
             value="10days"
             >
             10 Days
             <input type="radio" name="options" id="10days" />
+          </label>
+          <label 
+            className={this.props.store.resetMode === 'disable' ? "btn btn-secondary active": "btn btn-secondary"}
+            onClick={(event) => this.onChangeResetMode('disable')}
+            value="disable"
+            >
+            Disable
+            <input type="radio" name="options" id="disable" />
           </label>
         </div>
       </div>
@@ -67,7 +76,7 @@ export default class EditMenu extends Component {
                 <div className="card mb-3 edit">
                   <div className="card-body edit">
                     <h5 className="card-title edit">Modes</h5>
-                    <p className="card-text edit">Switch to a simplier mode.</p>
+                    <p className="card-text edit">{modeDescrip}</p>
                     {stateMode}
                   </div>
                 </div>
@@ -76,7 +85,7 @@ export default class EditMenu extends Component {
                 <div className="card mb-3 edit">
                   <div className="card-body edit">
                     <h5 className="card-title edit">Reset Frequency</h5>
-                    <p className="card-text edit">Set the frequency that tasks will be reset.</p>
+                    <p className="card-text edit">{resetDescrip}</p>
                     {resetMode}
                   </div>
                 </div>

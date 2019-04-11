@@ -42,6 +42,11 @@ class TaskStore {
         return this.tasks.filter((t) => t.id === id)[0]
     }
 
+    updateUserData() {
+        const callback = (result) => {  }
+        putTasks(this.userId, this.tasks, this.stateMode, this.resetMode, this.accessToken, callback)
+    }
+
     updateTaskState(id, state) {
         this.tasks = this.tasks.map((t) => {
             if(t.id === id) { t.state = state }
@@ -119,6 +124,7 @@ decorate(TaskStore, {
     stateMode: observable,
     resetMode: observable,
     tasks: observable,
+    updateUserData: action,
     getStates: action,
     updateTaskState: action,
     updateTask: action,
