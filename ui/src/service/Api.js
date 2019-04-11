@@ -14,7 +14,7 @@ export function getTasks(userId, accessToken, callback) {
     .then(response => {
         if(response.status !== 200) { callback([])}
         else { 
-            callback(response.data.Item.tasks)
+            callback(response.data.Item)
         }
     }).catch(error => {
         console.log(error)
@@ -22,10 +22,12 @@ export function getTasks(userId, accessToken, callback) {
     })
 }
 
-export function putTasks(userId, tasks, accessToken, callback) {
+export function putTasks(userId, tasks, stateMode, resetMode, accessToken, callback) {
     const body = { 
         Item: {
             'user_id': userId,
+            'stateMode': stateMode,
+            'resetMode': resetMode,
             'tasks': toJS(tasks)
         },
         TableName: 'krontsk'

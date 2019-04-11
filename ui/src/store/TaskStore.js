@@ -13,8 +13,28 @@ class TaskStore {
     resetMode = "monthly"
     tasks = []
 
+    getStates() {
+        if(this.stateMode === 'simple') {
+            return {
+                "working": "done",
+                "done": "not-done",
+                "not-done": "done"
+            }
+        } else {
+            return {
+                "working": "done",
+                "done": "not-done",
+                "not-done": "working"
+              }
+        }
+    }
+
     getTasks() {
-        const callback = (result) => { this.tasks = result }
+        const callback = (result) => { 
+            this.tasks = result.tasks || []
+            this.stateMode = result.stateMode || 'simple'
+            this.resetMode = result.resetMode || 'monthly'  
+        }
         getTasks(this.userId, this.accessToken, callback)
     }
 
@@ -28,7 +48,7 @@ class TaskStore {
             return t
         })
         const callback = (result) => {  }
-        putTasks(this.userId, this.tasks, this.accessToken, callback)
+        putTasks(this.userId, this.tasks, this.stateMode, this.resetMode, this.accessToken, callback)
     }
 
     updateTask(id, name, date) {
@@ -40,20 +60,20 @@ class TaskStore {
             return t
         })
         const callback = (result) => {  }
-        putTasks(this.userId, this.tasks, this.accessToken, callback)
+        putTasks(this.userId, this.tasks, this.stateMode, this.resetMode, this.accessToken, callback)
     }
 
     addTask(name, date) {
         const task = {"id": uuidv1(), "name": name, "date": date, "state": "not-done"}
         this.tasks.push(task)
         const callback = (result) => { }
-        putTasks(this.userId, this.tasks, this.accessToken, callback)
+        putTasks(this.userId, this.tasks, this.stateMode, this.resetMode, this.accessToken, callback)
     }
 
     deleteTask(id) {
         this.tasks = this.tasks.filter(f => f.id !== id)
         const callback = (result) => { }
-        putTasks(this.userId, this.tasks, this.accessToken, callback)
+        putTasks(this.userId, this.tasks, this.stateMode, this.resetMode, this.accessToken, callback)
     }
 
     month = {
@@ -99,6 +119,7 @@ decorate(TaskStore, {
     stateMode: observable,
     resetMode: observable,
     tasks: observable,
+    getStates: action,
     updateTaskState: action,
     updateTask: action,
     getTask: action,

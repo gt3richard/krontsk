@@ -9,12 +9,6 @@ const stateIconMap = {
   "not-done": "fas fa-check not-done task-icon"
 }
 
-const stateFlowMap = {
-  "working": "done",
-  "done": "not-done",
-  "not-done": "working"
-}
-
 export default class TaskView extends Component {
   constructor(props) {
       super(props);
@@ -32,7 +26,7 @@ export default class TaskView extends Component {
   }
 
   handleStateChange = event => {
-    const newState = stateFlowMap[this.state.state]
+    const newState = this.props.store.getStates()[this.state.state]
     this.setState({ "state": newState, "stateIcon": stateIconMap[newState] }, function() {
       this.props.store.updateTaskState(this.props.id, this.state.state)
     })
