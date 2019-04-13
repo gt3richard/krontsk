@@ -14,7 +14,7 @@ export default class SignUp extends Component {
       validationData: [] //optional
     })
       .then(data => console.log(data))
-      .then(()=>this.props.switchComponent("Verify")) // switches Sign Up to Verification
+      .then(()=>this.props.switchComponent("Return")) // switches Sign Up to Verification
       .catch(err => {
         console.log(err)
         switch(err.code) {
