@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('Loading function');
-
 const doc = require('dynamodb-doc');
 
 const dynamo = new doc.DynamoDB();

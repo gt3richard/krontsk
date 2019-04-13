@@ -3,6 +3,7 @@ import React, { PureComponent } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Verify from "./Verify";
+import Return from "./Return";
 import Forgot from "./Forgot";
 import ForgotVerify from "./ForgotVerify";
 
@@ -95,6 +96,15 @@ export default class Authentication extends PureComponent {
       case "Verify":
         return (
           <Verify
+            switchComponent={this.switchComponent}
+            handleFormInput={this.handleFormInput}
+            inputs={this.state}
+          />
+        );
+
+        case "Return":
+        return (
+          <Return
             switchComponent={this.switchComponent}
             handleFormInput={this.handleFormInput}
             inputs={this.state}
